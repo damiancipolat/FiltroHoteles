@@ -1,0 +1,62 @@
+<div>
+    <div style="height:70px;border:1px solid black;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding-top:10px;">
+        <img src="./app/views/imgs/logo.png" style="width:60px;float:left;margin-left:10px;">
+        <div style="float:left;font-family:impact;font-size:30px;margin-top:13px;margin-left:10px;">
+          HOTELES ANGULAR 2
+        </div>
+    </div>
+    <div style="height:50px;padding:10px;margin-top:10px;border:1px solid black;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div style="padding:5px;font-family:verdana;float:left;width:480px;">
+          <b>Filtro de tipos de hotel</b>
+          <div style="margin-top:6px;">
+            <input type="checkbox" [(ngModel)]="filtroTipos[0].flag" (change)="filtrar()">Negocios 
+            <input type="checkbox" [(ngModel)]="filtroTipos[1].flag" (change)="filtrar()">Turismo 
+            <input type="checkbox" [(ngModel)]="filtroTipos[2].flag" (change)="filtrar()">Romance                         
+            <input type="checkbox" [(ngModel)]="filtroTipos[3].flag" (change)="filtrar()">Familiar
+            <input type="checkbox" [(ngModel)]="filtroTipos[4].flag" (change)="filtrar()">Eventos
+          </div>          
+      </div>
+      <div style="margin-left:20px;float:left;height:55px;padding:5px;font-family:verdana;">
+          <b>Filtro de precio</b>
+          <div style="margin-top:5px;">              
+              <div style="float:left;">
+                <b>$ 0</b>
+              </div>
+              <div id="slider" style="margin-left:20px;float:left;width:300px;"></div>
+              <div style="float:left;margin-left:18px;margin-top:-2px;">
+                <b>$ {{mayorPrecio}}</b> &rarr; $ [{{slideValue}}]
+              </div>
+          </div>
+      </div>
+    </div>
+    
+    <!--Campo no visible para bindear con el modelo-->
+    <input #sldValue [(ngModel)]="slideValue" style="display:none;">
+
+    <!-- Listado de hoteles -->
+    <div>
+        <!--Hotel-->
+        <div *ngFor="let hotel of hotelesResu;" style="border:1px solid black;background:white;overflow:auto;padding:8px;margin-top:5px;padding:10px;margin-bottom:10px;">
+            <div style="float:left;width:80%;">
+                <div style="font-size:20px;font-family:verdana;color:#0040FF;">
+                  <b>{{hotel.nombre}}</b> - <span style="text-transform: uppercase;padding:5px;background:#298A08;color:white;font-size:14px;">{{hotel.tipo}}</span>
+                </div>
+                <div style="font-size:18px;font-family:verdana;color:black;">
+                  <i><b>$ {{hotel.precio}}</b></i>
+                </div>                
+                <div style="font-family:verdana;font-size:15px;margin-top:5px;padding-right:20px;">
+                  Lorem ipsum dolor sit amet, eu has cibo verear. Et has verear legimus civibus. Ad sed paulo adolescens. Et per natum nemore vocent, tollit tempor disputando cu has.
+                  Graecis delectus interpretaris ex vel, id pri appetere expetendis. Vidit ludus maiestatis duo ea, usu enim justo atqui at, prodesset forensibus disputando nam ex. Sapientem persecuti honestatis sed at, pri brute maiorum conceptam ex. Erant prodesset sed et, at dicit dicunt accusam eum. Te mei ornatus dissentiunt, vim hinc iudico singulis ut, duo putent mandamus patrioque ei.              
+                </div>
+            </div>
+            <div style="float:left;width:20%;">
+              <img src="./app/views/imgs/hoteles/{{hotel.img}}" style="height:150px;width:270px;">
+            </div>
+            <div>
+              <button style="border:1px solid gray;font-size:13px;color:white;cursor:pointer;font-family:verdana;padding:8px;background:#013ADF;">
+                Reservar &rarr;
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
